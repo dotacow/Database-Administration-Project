@@ -1,0 +1,89 @@
+% University: Applied Science Private University
+
+\documentclass{thesis-library}
+\usepackage{array}
+\renewcommand{\ttdefault}{lmtt}
+\captionsetup{justification=centering}
+\emergencystretch=1.5em
+\newcommand{\tablefont}{\footnotesize\setstretch{1.15}\hyphenpenalty=10000\relax}
+
+\begin{document}
+
+\newcommand{\thesisTitle}{Library Management System (LMS)\\[0.3cm]\large Phase 1: Project Proposal \& Requirements}
+\newcommand{\byLabel}{By:}
+\newcommand{\studentName}{\begin{tabular}{c}Yousef Kitaneh (202311043)\\ Mohammed Abudaqqa (202310896)\\ Nasser basheer (202312323)\\ Mohammad Amin (202411102)\end{tabular}}
+\newcommand{\supervisorLabel}{Instructor:}
+\newcommand{\supervisorName}{Prof. Mohammad A. Shkoukani}
+\newcommand{\degreeLineALabel}{Database Systems Administration}
+\newcommand{\majorName}{}
+\newcommand{\universityName}{Applied Science Private University}
+\newcommand{\deanshipName}{Faculty of Information Technology}
+\newcommand{\regionName}{Amman - Jordan}
+\newcommand{\degreeyearName}{2026}
+\newcommand{\degreemonthName}{November}
+
+\makecoverpage
+
+\pagenumbering{roman}
+
+\newpage
+\chapter*{\centering \Huge Table of Contents}
+\addcontentsline{toc}{chapter}{Table of Contents}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\tableofcontents
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+
+\newpage
+\pagenumbering{arabic}
+
+% ── Chapter 1: Project Proposal and Requirements Phase ──────────────────────
+
+\printchaptertitle{Project Proposal and Requirements Phase}
+
+\section{Chosen System}
+\textbf{Library Management System (LMS)}
+
+\section{Problem Definition}
+
+\subsection{The Current System or Scenario}
+Currently, the library operates using a fragmented, manual system. Inventory tracking relies on physical card catalogs and decentralized spreadsheets, while member registrations and daily transactions (borrowing and returning books) are recorded in paper-based ledgers. Librarians must manually check shelves or disconnected files to verify book availability and stamp due dates by hand.
+
+\subsection{Problems that Require a Database Solution}
+The existing manual setup introduces several operational bottlenecks:
+\begin{itemize}
+    \item \textbf{Data Redundancy and Inconsistency:} Member details and book records are duplicated across multiple sheets, leading to conflicting information.
+    \item \textbf{Inefficient Search Operations:} Locating a specific book by Title, Author, or ISBN requires manual scanning, which is time-consuming and prone to human error.
+    \item \textbf{Poor Transaction Tracking:} Identifying overdue books and calculating fines is a completely manual process, resulting in lost inventory and uncollected penalties.
+    \item \textbf{Lack of Concurrency:} Spreadsheets do not efficiently support simultaneous multi-user access by different library staff.
+\end{itemize}
+
+\subsection{Benefits of Implementing the Database}
+Transitioning to a robust Relational Database Management System (RDBMS) provides the following advantages:
+\begin{itemize}
+    \item \textbf{Centralized Data:} A normalized database eliminates redundancy, ensuring member and inventory data is stored once and updated globally.
+    \item \textbf{Automated Tracking:} Borrowing, returning, and fine calculations are handled programmatically, ensuring accuracy and accountability.
+    \item \textbf{Rapid Search and Retrieval:} Indexed tables allow instantaneous querying of the catalog, drastically reducing the time needed to serve members.
+    \item \textbf{Data Integrity and Security:} The database enforces constraints to prevent invalid data entry and restricts access to sensitive member information.
+\end{itemize}
+
+\section{System Requirements}
+
+\subsection{Functional Requirements}
+The functional requirements define what the system will do:
+\begin{itemize}
+    \item \textbf{Add, Update, and Delete Records:} Librarians must be able to seamlessly manage book inventory (add new arrivals, update details, remove lost books) and member profiles.
+    \item \textbf{Search Operations:} The system must allow users to search the library catalog by ISBN, Title, Author, Category, or Publication Year.
+    \item \textbf{Manage Transactions:} The system must process book check-outs, returns, and renewals, automatically updating the available copies count.
+    \item \textbf{Generate Reports:} The system must generate automated reports, including lists of currently active loans, overdue books, accumulated fines, and total inventory statistics.
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+The non-functional requirements define the performance and quality standards the system must meet:
+\begin{itemize}
+    \item \textbf{Data Security:} The system shall implement Role-Based Access Control (RBAC). Only authorized librarians may execute modifications (INSERT, UPDATE, DELETE), while sensitive data like passwords must be hashed.
+    \item \textbf{Performance:} The database must be optimized using proper indexing so that standard search queries and transaction updates execute in under two seconds.
+    \item \textbf{Reliability:} The system must guarantee ACID (Atomicity, Consistency, Isolation, Durability) properties to ensure that a book check-out transaction cannot be partially completed or corrupted.
+    \item \textbf{Backup and Recovery:} The database must support automated daily backups, allowing administrators to restore the system to a previous state in the event of hardware failure or accidental data loss.
+\end{itemize}
+
+\end{document}
